@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samus Ultimate Optimal Guide</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --accent: #f0883e;
+    --accent2: #58a6ff;
+    --green: #3fb950;
+    --red: #f85149;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    display: flex;
+    min-height: 100vh;
+  }
+  nav {
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 1.5rem 1rem;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  nav h1 {
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  nav a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 0.45rem 0.75rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+  }
+  nav a:hover, nav a.active {
+    background: #21262d;
+    color: var(--accent);
+  }
+  main {
+    flex: 1;
+    padding: 2rem 3rem;
+    max-width: 900px;
+  }
+  h2 {
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+    margin: 2rem 0 1rem;
+  }
+  h3 { color: var(--accent2); margin: 1.4rem 0 0.6rem; }
+  section { margin-bottom: 2.5rem; }
+  ul, ol { padding-left: 1.4rem; margin: 0.6rem 0; }
+  li { margin: 0.3rem 0; }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin: 0.8rem 0;
+  }
+  .strength { border-left: 3px solid var(--green); }
+  .weakness { border-left: 3px solid var(--red); }
+  details {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin: 0.6rem 0;
+    padding: 0.6rem 1rem;
+  }
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent2);
+  }
+  summary:hover { color: var(--accent); }
+  .checklist label {
+    display: block;
+    margin: 0.4rem 0;
+    cursor: pointer;
+  }
+  .checklist input { margin-right: 0.5rem; accent-color: var(--accent); }
+  .timer-demo {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  button {
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  button:hover { opacity: 0.9; }
+  .bar {
+    flex: 1;
+    height: 12px;
+    background: #21262d;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    background: var(--accent);
+    width: 0%;
+    transition: width 0.1s linear;
+  }
+  .note {
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-top: 0.4rem;
+  }
+  @media (max-width: 800px) {
+    body { flex-direction: column; }
+    nav { width: 100%; height: auto; position: relative; border-right: none; border-bottom: 1px solid var(--border); }
+    main { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <h1>Samus Ultimate</h1>
+  <a href="#identity">Core Identity</a>
+  <a href="#moves">Key Moves</a>
+  <a href="#charge">Charge Pressure</a>
+  <a href="#missiles">Missiles</a>
+  <a href="#screw">Screw Attack</a>
+  <a href="#bombs">Bomb Fundamentals</a>
+  <a href="#techchase">Tech Chase & Wall</a>
+  <a href="#ledge">Ledge Traps</a>
+  <a href="#recovery">Bomb Jump Recovery</a>
+  <a href="#grab">Grab & Throws</a>
+  <a href="#loop">Pressure Loop</a>
+  <a href="#practice">Practice Checklist</a>
+</nav>
+<main>
+  <h1 style="color:var(--accent); margin-bottom:0.5rem;">Samus Ultimate Optimal Guide</h1>
+  <p class="note">Interactive reference for optimal Samus play in Super Smash Bros. Ultimate. Strategy notes for pressure, bombs, tech chases, and recovery.</p>
+
+  <section id="identity">
+    <h2>Core Identity</h2>
+    <p>Samus is a keep-away / zoning character whose primary tool is the threat of Charge Shot. The charge itself creates pressure before it is ever fired. Opponents must respect the possibility of a full charge, which forces them to approach or jump in ways you can punish.</p>
+    <div class="card strength">
+      <strong>Strengths</strong>
+      <ul>
+        <li>Charge Shot controls space and deals heavy damage / kills at higher percents.</li>
+        <li>Excellent projectile suite (missiles, bombs, charge) for stage control and conditioning.</li>
+        <li>Strong edgeguarding and ledge trapping.</li>
+        <li>Good grab game with a tether that has range.</li>
+        <li>Bomb setups create delayed threats that force decisions.</li>
+      </ul>
+    </div>
+    <div class="card weakness">
+      <strong>Weaknesses</strong>
+      <ul>
+        <li>Linear recovery (Screw Attack is predictable; tether can be challenged).</li>
+        <li>Slow ground speed; loses if an opponent gets in and stays in.</li>
+        <li>Charge Shot is reactable if held indefinitely without mixing.</li>
+        <li>Limited close-range buttons.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="moves">
+    <h2>Key Moves to Use Most</h2>
+    <ul>
+      <li><strong>Charge Shot (Neutral B)</strong> — Core of the gameplan. Hold to threaten, release full or partial. Mix uncharged shots and cancels.</li>
+      <li><strong>Homing Missile</strong> — Tracks the opponent. Tilt up for high arc, down for low skim. Forces jumps and approaches.</li>
+      <li><strong>Super Missile (Side B)</strong> — Straight-line, fast, high damage. Can be charged. Kill tool at higher percents when unexpected.</li>
+      <li><strong>Bombs (Down B)</strong> — Stage control, tech chase coverage, ledge traps, recovery mix-ups. Detonation timing is controllable.</li>
+      <li><strong>Screw Attack (Up B)</strong> — Up-special with multi-hitbox and tether recovery. Use to surprise or recover; do not default to it.</li>
+      <li><strong>Fair / Bair</strong> — Spacing and air presence when opponents get closer.</li>
+      <li><strong>Grab / Zair</strong> — Grounded grab for throws and tech chases. Aerial grab (zair) is a ranged poke with low landing lag.</li>
+      <li><strong>Down Tilt</strong> — Fast low poke that pairs with bomb setups.</li>
+    </ul>
+  </section>
+
+  <section id="charge">
+    <h2>Charge Shot Pressure</h2>
+    <p>Always having charge on is correct as a baseline, but predictability is the risk. Mix full charges, partial shots, dash cancels, and jump cancels. The goal is to make every approach expensive. The charge is the threat; the other tools convert the fear into damage.</p>
+    <details>
+      <summary>Mix options</summary>
+      <ul>
+        <li>Full charge releases.</li>
+        <li>Partial / uncharged shots.</li>
+        <li>Dash cancels and jump cancels out of charge.</li>
+        <li>Immediate follow-ups (missile, bomb, grab) after conditioning a jump or shield.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="missiles">
+    <h2>Missile Usage</h2>
+    <div class="card">
+      <strong>Homing Missile</strong> — Neutral B (or after holding charge and releasing with direction). Tracks. Use to force movement.
+    </div>
+    <div class="card">
+      <strong>Super Missile</strong> — Side B. Straight, faster, harder-hitting. Charge it for extra damage. Best as a surprise kill option or to punish a committed approach.
+    </div>
+    <p>Angle both with the stick: up for high trajectory, down for low.</p>
+  </section>
+
+  <section id="screw">
+    <h2>Screw Attack</h2>
+    <p>Up B. Spins with hitboxes and can tether to ledges. It is both an attack and a recovery tool. It is linear, so good opponents will anti-air or edgeguard it. Use it to surprise or when you need the tether, not as a default escape.</p>
+  </section>
+
+  <section id="bombs">
+    <h2>Bomb Fundamentals</h2>
+    <p>Bombs spawn on frame 11. They auto-explode on frame 83 if left alone. Holding down detonates earlier (around frame 44 on ground, 48 in air). Explosion has a radius (~5 units) centered on the bomb.</p>
+    <div class="timer-demo">
+      <button id="startTimer">Simulate Timer</button>
+      <div class="bar"><div class="bar-fill" id="barFill"></div></div>
+      <span id="timerLabel">83 frames (long)</span>
+    </div>
+    <p class="note">Click the button to watch a visual of the long timer. Hold-down mode is roughly half the length.</p>
+    <details>
+      <summary>Detonation control</summary>
+      <ul>
+        <li>Release Down B → long timer (frame 83).</li>
+        <li>Hold Down → shorter timer (frame 44-ish).</li>
+        <li>This lets you time the explosion to an opponent's landing or tech.</li>
+      </ul>
+    </details>
+    <p>You can have multiple active bombs. Dropping two side-by-side creates a wider coverage wall.</p>
+  </section>
+
+  <section id="techchase">
+    <h2>Bomb Tech Chase & Wall</h2>
+    <p>The bomb does not track. Place it so the explosion radius covers both left and right escape routes.</p>
+    <details open>
+      <summary>Basic placement</summary>
+      <ol>
+        <li>Drop bomb directly under or on the opponent's expected landing/tech spot.</li>
+        <li>The blast covers both directions from the center.</li>
+        <li>Hold or release to time the detonation to their tech window.</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Wall technique (two bombs)</summary>
+      <ol>
+        <li>Drop one bomb.</li>
+        <li>Immediately drop a second bomb offset to one side.</li>
+        <li>The combined radius covers a wider area, punishing rolls in either direction.</li>
+        <li>Use when you have time (after a knockdown or at ledge).</li>
+      </ol>
+    </details>
+    <details>
+      <summary>Consistent trapping</summary>
+      <ul>
+        <li>After knocking them down, drop bomb(s) on the tech spot.</li>
+        <li>Walk forward slightly and threaten with down tilt or grab.</li>
+        <li>If they roll toward the bomb, the explosion catches them.</li>
+        <li>If they roll away, chase or cover with another bomb / projectile.</li>
+        <li>Mix the punishment so they cannot call the pattern.</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Frame trap idea</summary>
+      <ul>
+        <li>Drop bomb with long timer.</li>
+        <li>Follow with a fast move (down tilt, jab, short hop nair).</li>
+        <li>Opponent must respect both the immediate move and the upcoming explosion.</li>
+        <li>Holding down shortens the timer for tighter timing against falling opponents.</li>
+      </ul>
+    </details>
+  </section>
+
+  <section id="ledge">
+    <h2>Ledge Trapping with Bombs</h2>
+    <ul>
+      <li>Drop bomb on or near the ledge where the opponent will grab or stand up.</li>
+      <li>The explosion can hit them as they get up or roll from ledge.</li>
+      <li>Follow with down tilt to catch the option that avoids the bomb.</li>
+      <li>Give a little space so you can react to their getup (roll, jump, attack, neutral getup).</li>
+      <li>If they jump, you are already positioned to anti-air or punish the landing.</li>
+    </ul>
+  </section>
+
+  <section id="recovery">
+    <h2>Bomb Jump / Bomb Roll Recovery</h2>
+    <p>Offstage, dropping a bomb under yourself and detonating it can launch you upward. This is a classic Samus recovery mix-up across Smash titles.</p>
+    <details>
+      <summary>Execution steps</summary>
+      <ol>
+        <li>While falling offstage, press Down B to drop a bomb beneath you.</li>
+        <li>Time the detonation (hold down for faster pop, or let it tick) so the explosion hits you from below.</li>
+        <li>The upward knockback gives extra height.</li>
+        <li>Combine with Screw Attack or tether afterward to reach the ledge.</li>
+      </ol>
+    </details>
+    <p>It does not fully reset jumps in the same way as some other characters' tools, but the vertical boost is real and makes the recovery less linear. Practice the timing so the bomb pops when you are positioned above it.</p>
+  </section>
+
+  <section id="grab">
+    <h2>Grab and Throw Notes</h2>
+    <ul>
+      <li>Grounded grab has range due to the Grapple Beam.</li>
+      <li>After a grab, down throw can set up tech chases or aerial follow-ups at lower percents.</li>
+      <li>Up throw and back throw are more for positioning or kills at higher percents.</li>
+      <li>Aerial grab (press grab in air) is a zair: it deals damage, has low landing lag, and is a safe poke while descending. It is not a true grab.</li>
+    </ul>
+  </section>
+
+  <section id="loop">
+    <h2>General Pressure Loop</h2>
+    <ol>
+      <li>Hold Charge Shot to threaten.</li>
+      <li>Use missiles and bombs to force approaches or jumps.</li>
+      <li>Punish the forced movement with charge release, grab, or aerial.</li>
+      <li>On knockdown, set bomb(s) for tech chase coverage.</li>
+      <li>At ledge, layer bomb + down tilt.</li>
+      <li>Mix the responses so patterns are not free to call.</li>
+    </ol>
+  </section>
+
+  <section id="practice">
+    <h2>Practice Checklist</h2>
+    <div class="card checklist">
+      <label><input type="checkbox"> Charge cancel timing (dash / jump)</label>
+      <label><input type="checkbox"> Bomb detonation control (hold vs release)</label>
+      <label><input type="checkbox"> Two-bomb wall placement after knockdowns</label>
+      <label><input type="checkbox"> Bomb jump recovery timing offstage</label>
+      <label><input type="checkbox"> Ledge bomb + down tilt sequence</label>
+      <label><input type="checkbox"> Mixing punish options after bomb setups</label>
+    </div>
+    <p class="note">Check off items as you drill them. Progress is saved in your browser for this session.</p>
+  </section>
+</main>
+
+<script>
+  // Active nav highlight
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // Bomb timer demo
+  const btn = document.getElementById('startTimer');
+  const fill = document.getElementById('barFill');
+  const label = document.getElementById('timerLabel');
+  let running = false;
+  btn.addEventListener('click', () => {
+    if (running) return;
+    running = true;
+    fill.style.width = '0%';
+    label.textContent = '83 frames (long)';
+    let frame = 0;
+    const total = 83;
+    const interval = setInterval(() => {
+      frame++;
+      fill.style.width = (frame / total * 100) + '%';
+      label.textContent = (total - frame) + ' frames left';
+      if (frame >= total) {
+        clearInterval(interval);
+        label.textContent = 'BOOM';
+        running = false;
+        setTimeout(() => { fill.style.width = '0%'; label.textContent = '83 frames (long)'; }, 800);
+      }
+    }, 40); // ~60fps scaled down for visibility
+  });
+
+  // Persist checklist
+  const checks = document.querySelectorAll('.checklist input');
+  checks.forEach((cb, i) => {
+    const key = 'samus-check-' + i;
+    cb.checked = localStorage.getItem(key) === '1';
+    cb.addEventListener('change', () => {
+      localStorage.setItem(key, cb.checked ? '1' : '0');
+    });
+  });
+</script>
+</body>
+</html>
